@@ -2,7 +2,7 @@
   <v-container>
     <v-row>
       <v-col cols="12">
-        <h1 class="text-center">未完成</h1>
+        <h1 class="text-center text-accent">未完成</h1>
       </v-col>
       <v-col cols="12">
         <!--
@@ -24,7 +24,7 @@
           @click:append="onInputSubmit"
           @keydown.enter="onInputSubmit"
         />
-        <v-table>
+        <v-table class="v-fade-transition-enter-active v-fade-transition-leave-active">
           <thead>
             <tr>
               <th>事項</th>
@@ -61,10 +61,10 @@
         </v-table>
       </v-col>
       <v-col cols="12">
-        <h1 class="text-center">已完成</h1>
+        <h1 class="text-center text-accent">已完成</h1>
       </v-col>
       <v-col cols="12">
-        <v-table>
+        <v-table class="v-fade-transition-enter-active v-fade-transition-leave-active">
           <thead>
             <tr>
               <th>事項</th>
@@ -131,3 +131,10 @@ const onEditSubmit = (id, i) => {
   list.submitEdit(id)
 }
 </script>
+
+<style>
+.v-fade-transition-enter-active,
+.v-fade-transition-leave-active {
+  transition: none !important;
+}
+</style>

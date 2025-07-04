@@ -74,7 +74,7 @@
 defineProps(['data', 'color'])
 </script>
 
-<style scoped lang="sass">
+<style scoped lang="sass" v-bind>
 svg
   margin: 5px
   width: 100px

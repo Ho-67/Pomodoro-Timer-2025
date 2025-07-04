@@ -2,11 +2,16 @@
   <v-container>
     <v-row>
       <v-col cols="12">
-        <h1>目前事項</h1>
-        <h2>{{ list.currentItem }}</h2>
-        <h2>{{ list.timeleft }}</h2>
+        <h1 class="text-accent">目前事項</h1>
+        <h2 style="color: goldenrod">{{ list.currentItem }}</h2>
+        <h2 class="text-info">{{ list.timeleft }}</h2>
         <h2>{{ timeLeftText }}</h2>
-        <DigitNumber v-for="(data, i) in timeLeftText" :key="i" color="white" :data="data" />
+        <DigitNumber
+          v-for="(data, i) in timeLeftText"
+          :key="i"
+          :color="theme.current.value.colors.secondary"
+          :data="data"
+        />
       </v-col>
       <v-col cols="12">
         <!--
@@ -33,12 +38,18 @@
 <script setup>
 import { useWebNotification } from '@vueuse/core'
 import { computed, ref } from 'vue'
+import { useTheme } from 'vuetify'
 import DigitNumber from '@/components/DigitNumber.vue'
 import { useListStore } from '@/stores/list'
 import { useSettingsStore } from '@/stores/settings'
 
 const list = useListStore()
 const settings = useSettingsStore()
+const theme = useTheme()
+
+const toggleTheme = () => {
+  theme.global.name.value = theme.global.name.value === 'lightTheme' ? 'darkTheme' : 'lightTheme'
+}
 
 // 倒數狀態
 const STATUS = {
@@ -109,3 +120,9 @@ const timeLeftText = computed(() => {
   return m + ':' + s
 })
 </script>
+
+<style>
+.text-accent {
+  color: var(--v-theme-accent);
+}
+</style>

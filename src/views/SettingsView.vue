@@ -2,10 +2,10 @@
   <v-container>
     <v-row>
       <v-col cols="12">
-        <h1 class="text-center">鈴聲設定</h1>
+        <h1 class="text-center text-accent">鈴聲設定</h1>
       </v-col>
       <v-col cols="12">
-        <v-table>
+        <v-table class="v-fade-transition-enter-active v-fade-transition-leave-active">
           <thead>
             <tr>
               <th>名稱</th>
